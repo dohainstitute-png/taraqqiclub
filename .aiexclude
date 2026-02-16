@@ -1,0 +1,8 @@
+.guard/
+.idx/
+node_modules/
+dist/
+build/
+.firebase/
+# lock backend during UI-only phase (if exists)
+functions/

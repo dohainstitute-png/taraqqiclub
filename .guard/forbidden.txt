@@ -1,0 +1,9 @@
+# Forbidden patterns for UI-ONLY phase
+from "firebase
+from 'firebase
+initializeApp
+getAuth
+getFirestore
+stripe
+fetch\(
+https?://

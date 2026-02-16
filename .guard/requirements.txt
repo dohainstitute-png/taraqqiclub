@@ -1,0 +1,4 @@
+# Definition of Done rules for this station
+# Examples:
+# FILE src/features/auth/pages/LoginPage.tsx
+# CONTAINS src/app/routes.tsx "/login"

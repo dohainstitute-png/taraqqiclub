@@ -1,0 +1,5 @@
+# Allowed edits for this station (ONLY)
+# Example:
+# src/features/auth/**
+# src/ui/**
+# src/app/routes.tsx
