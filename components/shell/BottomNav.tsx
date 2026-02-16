@@ -1,47 +1,20 @@
-"use client";
+'use client';
 
-import { usePathname, useRouter } from "next/navigation";
-import { t, isLocale, type Locale } from "../../lib/i18n";
+const navItems = [
+  { key: 'home', icon: '🏠' },
+  { key: 'discover', icon: '🧭' },
+  { key: 'library', icon: '📚' },
+  { key: 'profile', icon: '👤' },
+];
 
-type NavItem = { key: "home" | "discover" | "library" | "profile"; icon: string };
-
-export default function BottomNav({ locale }: { locale: string }) {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const loc = (isLocale(locale) ? locale : "ar") as Locale;
-  const labels = t(loc);
-
-  const items: NavItem[] = [
-    { key: "home", icon: "🏠" },
-    { key: "discover", icon: "🧭" },
-    { key: "library", icon: "📚" },
-    { key: "profile", icon: "👤" },
-  ];
-
-  const isActive = (key: NavItem["key"]) =>
-    pathname === `/${loc}/${key}` || pathname?.startsWith(`/${loc}/${key}/`);
-
+export default function BottomNav() {
   return (
-    <nav className="bottomnav" aria-label="Bottom Navigation">
-      {items.map((it) => {
-        const active = isActive(it.key);
-        const label = labels[it.key];
-
-        return (
-          <button
-            key={it.key}
-            type="button"
-            className="navItem"
-            aria-current={active ? "page" : undefined}
-            onClick={() => router.push(`/${loc}/${it.key}`)}
-          >
-            <div aria-hidden="true">{it.icon}</div>
-            <div className="navLabel">{label}</div>
-            <div className={`indicator ${active ? "indicatorActive" : ""}`} />
-          </button>
-        );
-      })}
+    <nav className="fixed bottom-0 left-0 right-0 flex h-16 items-center justify-around border-t bg-white">
+      {navItems.map((item) => (
+        <div key={item.key} className="flex flex-col items-center gap-1">
+          <div className="text-2xl">{item.icon}</div>
+        </div>
+      ))}
     </nav>
   );
 }
