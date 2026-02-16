@@ -52,6 +52,9 @@ matches_allowed() {
 
 viol=""
 while IFS= read -r f; do
+  # Ignore internal checkpoint ref file (auto-changes)
+  [[ "$f" == ".guard/base_ref" ]] && continue
+  [[ "$f" == ".guard/state.env" ]] && continue
   [[ -z "$f" ]] && continue
   if ! matches_allowed "$f"; then viol+="$f"$'\n'; fi
 done <<< "$changed"
