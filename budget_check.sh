@@ -1,18 +1,30 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
 BASE="$(cat .guard/base_ref)"
 B=".guard/budget.json"
 [[ -f "$B" ]] || { echo "❌ Missing $B"; exit 1; }
 
-max_files="$(python -c 'import json;print(json.load(open(".guard/budget.json"))["max_files"])')"
-max_add="$(python -c 'import json;print(json.load(open(".guard/budget.json"))["max_add"])')"
-max_del="$(python -c 'import json;print(json.load(open(".guard/budget.json"))["max_del"])')"
+# Parse JSON numbers without python
+extract_num () {
+  local key="$1"
+  local val
+  val="$(grep -oE "\"$key\"[[:space:]]*:[[:space:]]*[0-9]+" "$B" | head -n1 | grep -oE '[0-9]+' || true)"
+  [[ -n "${val:-}" ]] || { echo "❌ Missing key in budget.json: $key"; exit 1; }
+  echo "$val"
+}
+
+max_files="$(extract_num max_files)"
+max_add="$(extract_num max_add)"
+max_del="$(extract_num max_del)"
 
 files="$(git diff --name-only "$BASE" | wc -l | tr -d ' ')"
-adds=0; dels=0
+
+adds=0
+dels=0
 while read -r a d _; do
-  [[ "$a" == "-" ]] && a=0
-  [[ "$d" == "-" ]] && d=0
+  [[ "${a:-}" == "-" ]] && a=0
+  [[ "${d:-}" == "-" ]] && d=0
   adds=$((adds + a))
   dels=$((dels + d))
 done < <(git diff --numstat "$BASE")
