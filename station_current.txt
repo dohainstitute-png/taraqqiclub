@@ -1,0 +1,80 @@
+ STATION 001
+المحطة 1: الأساس الذي سيتكرر في كل ما بعده (Brand + Design System + IA/Navigation + Entry Flow)
+المحطة 1: الأساس الذي سيتكرر في كل ما بعده (Brand + Design System + IA/Navigation + Entry Flow)
+عرّف المنتج بصريًا وتشغيليًا من أول شاشة: أنشئ هوية واجهة TaraqqiClub (ألوان/خط عربي مناسب/أيقونات/مسافات/حواف) + نبرة نصوص عربية قصيرة، ثم ثبّت قاعدة RTL افتراضيًا مع دعم LTR داخل أجزاء محددة لاحقًا (روابط/مراجع) بدون كسر التخطيط.
+ابنِ Design System قابل لإعادة الاستخدام: صمّم مكتبة مكوّنات موحّدة تُستخدم لاحقًا في كل المحطات: (Top App Bar، Bottom Nav، Tabs، Chips/Tags، Cards بأنواعها، قوائم، أزرار Primary/Secondary/Quiet، حقول إدخال، Modals/Sheets، Toast/Snackbar، Badges: Verified/Institution/Availability…)، وحدّد لكل مكوّن حالات Loading / Empty / Error / Disabled / Skeleton ونصوصها القياسية.
+صمّم هيكل تنقّل عالمي يربط “اكتشاف → قراءة → مساهمة”: اعمل خريطة IA ومسارات واضحة: نقاط دخول ثابتة (Bottom Nav مثلاً: Home/Discover/Library/Profile) + دخول سياقي من أي بطاقة إلى (Paper Page / Topic Hub / Profile) ثم رجوع منطقي، مع زر/إجراء ثابت يقود إلى “المساهمة” (نشر/رفع/إنشاء) حسب الصلاحيات.
+نفّذ تدفّق البداية (Splash → Onboarding → Auth) دون تشتيت: صمّم بالتسلسل: Splash + اختيار اللغة/المنطقة (حفظ locale/timezone) → Onboarding (3 خطوات فقط: Role → Topics → Follow via Starter Packs) مع “تخطي” واضح → Login/Signup (OTP + مزوّدات) + خيار التصفح كضيف إن كان مفعّلًا؛ واجعل كل خطوة تحفظ الحالة وتعرض Skeleton عند التحميل ورسائل خطأ قابلة للإعادة.
+اربط نهاية المحطة ببداية المحطة التالية مباشرة
+تحديث ملزم لهذه الخطة (لتعميق المحاور الثلاثة: UX + IA/Navigation + Internal/Contextual Navigation)
+1) ثبّت قاعدة “Global / Local / Contextual” كقاعدة تصميم:
+- Global: Bottom Nav + Top App Bar Actions (بحث/إنشاء/إشعارات) ثابتة.
+- Local: تبويبات/قوائم داخل كل سطح (Home/Discover/Library/Profile…).
+- Contextual: روابط داخل الصفحات (Context Strip + Breadcrumbs عند الهرمية + Related/See also + Chips).
+2) قاعدة “العودة لنفس السياق” عبر كل المنصة:
+- كل صفحة تفاصيل تُفتح داخل القسم الحالي.
+- زر الرجوع يعيد المستخدم إلى نفس القائمة/النتائج/الفلاتر/موضع التمرير.
+3) قاعدة “لا نهاية مسدودة”:
+- كل صفحة كيان (Paper/Topic/Researcher/Institution/Post/Highlight/Collection) يجب أن تحتوي دائمًا على وحدتين على الأقل تقودان لخطوة تالية (Follow/Save/Read/Start Session/Related…).
+4) الروابط السياقية يجب أن تكون مُفسَّرة:
+- أي صندوق “مشابه/شاهد أيضًا” يعرض سببًا واحدًا على الأقل (نفس الموضوع/نفس المؤلف/يستشهد/من نفس المؤسسة…).
+5) Breadcrumbs تُستخدم فقط حيث يوجد هرم (Topics/Directories/Collections…)، ولا تُفرض على Feed.
+6) البحث ليس “صفحة” فقط؛ بل مدخل تنقّل عالمي:
+- يجب إتاحة زر/أيقونة بحث من كل تبويب، وفتح Discover مع الحفاظ على مصدر الرجوع.
+ملحق دمج الهوية البصرية v2.4 — (إضافة فقط دون تعديل نص المحطة)
+(A) Tokens الإلزامية — تُعرَّف الآن وتُستخدم لاحقًا في كل الشاشات والمكوّنات
+•	Brand
+o	BrandPrimary #0D47A1
+o	BrandDeep #06152B
+o	BrandSoft #D6E4FF
+o	WarmPaper #F6F3EE
+o	CardWhite #FFFFFF
+•	Signature (ممنوع كنص صغير)
+o	CopperUI #B05920
+o	MintUI #00B3A4
+•	Text-Safe Accents
+o	CopperText #A65520
+o	MintText #00796B
+•	Neutrals
+o	Ink #0B1220
+o	Slate #22324A
+o	Skeleton #E0D7CC
+•	Lines
+o	DividerLine #E0DBD4 (فواصل/زخرفة)
+o	ControlBorder #8A7C6E (حدود تفاعلية/حقول/أزرار/بطاقات تفاعلية)
+•	Dark
+o	DarkBG #060B14
+o	DarkSurface #111623
+o	DarkText #F2F5FA
+o	DarkSubtext #B9C2D0
+o	BlueNight #4A8CFF (للروابط/النشط كنص على الداكن فقط)
+•	On-Color
+o	OnBrandPrimary = CardWhite
+o	OnBrandDeep = CardWhite
+o	OnBrandSoft = Ink
+o	OnWarmPaper = Ink
+o	OnCardWhite = Ink
+o	OnDarkBG = DarkText
+o	OnDarkSurface = DarkText
+(B) قواعد الهوية الأساسية التي تُثبت هنا لتخدم كل ما بعده
+•	WarmPaper خلفية افتراضية لكل الشاشات في Light Mode (الشاشة = WarmPaper، البطاقات = CardWhite).
+•	CopperKeyline توقيع يومي ثابت على كل شاشة رئيسية: خط 2px CopperUI بطول 48px بجوار عنوان الصفحة في Top Bar (RTL: يمين العنوان / LTR: يساره). ممنوع تكراره داخل البطاقات.
+•	Links داخل المتن = لون + Underline دائم
+Light: BrandPrimary + underline / Dark: BlueNight + underline.
+•	Focus مرئي إلزامي لكل عنصر تفاعلي
+Light: Outline 2px BrandPrimary + Offset 2px
+Dark: Outline 2px BlueNight + Offset 2px
+ممنوع Focus بالظل.
+•	Semantic states = لون + شكل (أيقونة):
+Success = MintText + ✔︎ / Warning = CopperText + ! / Error = #B3261E + ✕ / Info = BrandPrimary أو BlueNight + i
+•	مؤشرات الحالة ذات معنى (Active/Online/Selected): حجم 6px
+Light: MintText / Dark: MintUI
+•	Typography (بدون أي تكثيف عربي): IBM Plex Sans Arabic (بديل Noto Sans Arabic UI)
+Display 34/42 700 — H1 28/36 700 — H2 22/30 600 — H3 18/26 600 — BodyL 16/28 — BodyM 15/24 — BodyS 13/20 — Label 12/16 600
+Line-height للعربية ≥ 1.5×، ممنوع Italic/Condensed للعربية.
+•	Grid/Spacing: 8pt + القيم المسموحة: 4,8,12,16,24,32,40,48,64
+•	Radii: Card 18 / Input 14 / Button 14 / Chip 999
+•	Motion: EaseOutCubic + Press 120ms + Card 180ms + Panel 220ms + Reduced Motion = Fade فقط ≤120ms
+•	Skeleton: Skeleton color + Shimmer 1.2s، وبعد 5 ثوانٍ: رسالة حالة + زر إعادة المحاولة.
+________________________________________
+ STATION 002
