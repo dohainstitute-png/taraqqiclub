@@ -1,4 +1,4 @@
-## STATION 001 — AppShell Lock (UI-ONLY)
+## STATION 000 — AppShell Lock (UI-ONLY)
 
 GOAL:
 تثبيت AppShell فقط. ممنوع i18n. ممنوع أي صفحات/مسارات. ممنوع أي تعديل خارج مكونات AppShell.
