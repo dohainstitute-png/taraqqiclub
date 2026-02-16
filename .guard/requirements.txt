@@ -1,3 +1,0 @@
-FILE components/shell/AppShell.tsx
-FILE components/shell/BottomNav.tsx
-FILE components/shell/TopAppBar.tsx
