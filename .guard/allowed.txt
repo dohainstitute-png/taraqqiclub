@@ -1,5 +1,6 @@
-# Allowed edits for this station (ONLY)
-# Example:
-# src/features/auth/**
-# src/ui/**
-# src/app/routes.tsx
+components/shell/**
+components/templates/**
+components/tempLate/**
+lib/**
+middleware.ts
+public/brand/**
