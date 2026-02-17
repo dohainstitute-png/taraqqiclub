@@ -1,14 +1,30 @@
 'use client';
 
-import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
+import { getDictionary } from '@/lib/i18n';
+import { ArrowLeft } from 'lucide-react';
 
-export default function TopAppBar() {
+const TopAppBar = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const showBackButton = pathname.split('/').length > 3;
+
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b bg-white px-4">
-      <div className="flex items-center gap-2">
-        <Image src="/brand/logo.png" alt="TaraqqiClub" width={36} height={36} />
-        <h1 className="text-lg font-bold">TaraqqiClub</h1>
+    <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b">
+      {showBackButton ? (
+        <button onClick={() => router.back()} className="p-2">
+          <ArrowLeft />
+        </button>
+      ) : (
+        <div />
+      )}
+      <h1 className="text-xl font-bold">{dictionary.appName}</h1>
+      <div>
+        {/* Add actions here */}
       </div>
     </header>
   );
-}
+};
+
+export default TopAppBar;

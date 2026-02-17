@@ -1,15 +1,23 @@
-"use client";
+'use client';
 
-import type { ReactNode } from "react";
-import TopAppBar from "./TopAppBar";
-import BottomNav from "./BottomNav";
+import TopAppBar from '@/components/shell/TopAppBar';
+import MainNavigation from '@/components/shell/MainNavigation';
+import { Locale, getDictionary } from '@/lib/i18n';
 
-export default function AppShell({ children }: { children: ReactNode }) {
+interface AppShellProps {
+  children: React.ReactNode;
+  dictionary: Awaited<ReturnType<typeof getDictionary>>;
+  locale: Locale;
+}
+
+const AppShell = ({ children, dictionary, locale }: AppShellProps) => {
   return (
     <div className="flex flex-col h-screen">
-      <TopAppBar />
+      <TopAppBar dictionary={dictionary} />
       <main className="flex-1 overflow-y-auto">{children}</main>
-      <BottomNav />
+      <MainNavigation dictionary={dictionary} locale={locale} />
     </div>
   );
-}
+};
+
+export default AppShell;

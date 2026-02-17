@@ -1,12 +1,14 @@
+@import './tokens.css';
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--warm-paper);
+  --foreground: var(--ink);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--dark-bg);
+    --foreground: var(--dark-text);
   }
 }
 
@@ -19,7 +21,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-arabic);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

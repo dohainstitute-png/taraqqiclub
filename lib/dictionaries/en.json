@@ -1,0 +1,22 @@
+{
+    "appName": "Our App",
+    "skip": "Skip",
+    "next": "Next",
+    "back": "Back",
+    "start": "Start",
+    "navigation": {
+        "home": "Home",
+        "discover": "Discover",
+        "library": "Library",
+        "notifications": "Notifications",
+        "profile": "Profile"
+    },
+    "pages": {
+        "home": {
+            "title": "Home Page"
+        },
+        "detail": {
+            "title": "Detail Page"
+        }
+    }
+}

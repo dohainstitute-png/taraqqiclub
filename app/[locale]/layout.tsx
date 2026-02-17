@@ -1,3 +1,7 @@
+import { SplashScreen } from "@/components/entry/SplashScreen";
+import { LangPicker } from "@/components/entry/LangPicker";
+import { Onboarding } from "@/components/entry/Onboarding";
+import { Auth } from "@/components/entry/Auth";
 import type { ReactNode } from "react";
 import { isLocale, type Locale } from "../../lib/i18n";
 
@@ -13,6 +17,10 @@ export default function LocaleLayout({
 
   return (
     <div lang={locale} dir={dir}>
+      <SplashScreen />
+      <LangPicker />
+      <Onboarding locale={locale} />
+      <Auth locale={locale} />
       {children}
     </div>
   );

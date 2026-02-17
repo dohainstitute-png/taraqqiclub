@@ -1,67 +1,11 @@
-export type Locale = "ar" | "en";
+import 'server-only';
 
-export function isLocale(v: string): v is Locale {
-  return v === "ar" || v === "en";
-}
+import { i18n, type Locale } from './i18n-config';
 
-export function t(locale: Locale) {
-  const ar = {
-    appName: "TaraqqiClub",
-    search: "بحث",
-    create: "إنشاء",
-    notifications: "إشعارات",
-    home: "الرئيسية",
-    discover: "اكتشاف",
-    library: "المكتبة",
-    profile: "الملف",
-    start: "ابدأ",
-    skip: "تخطي",
-    next: "التالي",
-    back: "رجوع",
-    close: "إغلاق",
-    contribute: "مساهمة",
-    sheetTitle: "المساهمة",
-    sheetHint: "Placeholder — سيُستبدل لاحقًا حسب الصلاحيات.",
-    retry: "إعادة المحاولة",
-    loadingSlow: "يبدو أن التحميل يستغرق وقتًا أطول من المعتاد.",
-    localNav: "تنقّل محلي",
-    contextual: "روابط سياقية",
-    related: "Related (Placeholder)",
-    because: "السبب: Placeholder للتوسعة لاحقًا",
-    timezone: "المنطقة الزمنية",
-    contentLang: "لغة المحتوى",
-    arabic: "العربية",
-    english: "English",
-  };
+const dictionaries = {
+  en: () => import('./dictionaries/en.json').then((module) => module.default),
+  ar: () => import('./dictionaries/ar.json').then((module) => module.default),
+};
 
-  const en = {
-    appName: "TaraqqiClub",
-    search: "Search",
-    create: "Create",
-    notifications: "Notifications",
-    home: "Home",
-    discover: "Discover",
-    library: "Library",
-    profile: "Profile",
-    start: "Start",
-    skip: "Skip",
-    next: "Next",
-    back: "Back",
-    close: "Close",
-    contribute: "Contribute",
-    sheetTitle: "Contribute",
-    sheetHint: "Placeholder — will be replaced later by permissions.",
-    retry: "Retry",
-    loadingSlow: "Loading is taking longer than usual.",
-    localNav: "Local navigation",
-    contextual: "Contextual links",
-    related: "Related (Placeholder)",
-    because: "Reason: placeholder to be expanded later",
-    timezone: "Timezone",
-    contentLang: "Content language",
-    arabic: "العربية",
-    english: "English",
-  };
-
-  return locale === "ar" ? ar : en;
-}
+export const getDictionary = async (locale: Locale) =>
+  dictionaries[i18n.locales.includes(locale) ? locale : i18n.defaultLocale]();

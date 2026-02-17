@@ -1,0 +1,83 @@
+
+:root {
+  /* (A) Tokens الإلزامية — تُعرَّف الآن وتُستخدم لاحقًا */
+
+  /* Brand */
+  --brand-primary: #0D47A1;
+  --brand-deep: #06152B;
+  --brand-soft: #D6E4FF;
+  --warm-paper: #F6F3EE;
+  --card-white: #FFFFFF;
+
+  /* Signature (ممنوع كنص صغير) */
+  --copper-ui: #B05920;
+  --mint-ui: #00B3A4;
+
+  /* Text-Safe Accents */
+  --copper-text: #A65520;
+  --mint-text: #00796B;
+
+  /* Neutrals */
+  --ink: #0B1220;
+  --slate: #22324A;
+  --skeleton: #E0D7CC;
+
+  /* Lines */
+  --divider-line: #E0DBD4;
+  --control-border: #8A7C6E;
+
+  /* Dark */
+  --dark-bg: #060B14;
+  --dark-surface: #111623;
+  --dark-text: #F2F5FA;
+  --dark-subtext: #B9C2D0;
+  --blue-night: #4A8CFF; /* للروابط/النشط كنص على الداكن فقط */
+
+  /* On-Color */
+  --on-brand-primary: var(--card-white);
+  --on-brand-deep: var(--card-white);
+  --on-brand-soft: var(--ink);
+  --on-warm-paper: var(--ink);
+  --on-card-white: var(--ink);
+  --on-dark-bg: var(--dark-text);
+  --on-dark-surface: var(--dark-text);
+  
+  /* Semantic states */
+  --success-text: var(--mint-text);
+  --warning-text: var(--copper-text);
+  --error-text: #B3261E;
+  --info-text: var(--brand-primary);
+
+  /* (B) قواعد الهوية الأساسية */
+  
+  /* Typography */
+  /* IBM Plex Sans Arabic Fallback -> Noto Sans Arabic UI */
+  --font-family-arabic: 'IBM Plex Sans Arabic', 'Noto Sans Arabic UI', sans-serif;
+
+  /* Grid/Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  /* Radii */
+  --radius-card: 18px;
+  --radius-input: 14px;
+  --radius-button: 14px;
+  --radius-chip: 999px;
+
+  /* Motion */
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-press: 120ms;
+  --motion-card: 180ms;
+  --motion-panel: 220ms;
+  --motion-reduced-fade: 120ms;
+
+  /* Skeleton */
+  --skeleton-shimmer-duration: 1.2s;
+}

@@ -1,0 +1,22 @@
+{
+    "appName": "تطبيقنا",
+    "skip": "تخطى",
+    "next": "التالى",
+    "back": "رجوع",
+    "start": "ابدأ",
+    "navigation": {
+        "home": "الرئيسية",
+        "discover": "اكتشف",
+        "library": "المكتبة",
+        "notifications": "الإشعارات",
+        "profile": "الملف الشخصي"
+    },
+    "pages": {
+        "home": {
+            "title": "الصفحة الرئيسية"
+        },
+        "detail": {
+            "title": "صفحة التفاصيل"
+        }
+    }
+}

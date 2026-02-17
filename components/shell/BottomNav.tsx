@@ -1,20 +1,32 @@
 'use client';
 
-const navItems = [
-  { key: 'home', icon: '🏠' },
-  { key: 'discover', icon: '🧭' },
-  { key: 'library', icon: '📚' },
-  { key: 'profile', icon: '👤' },
-];
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { t, type Locale } from '@/lib/i18n';
 
-export default function BottomNav() {
+// Placeholder component for BottomNav
+export function BottomNav({ locale }: { locale: Locale }) {
+  const T = t(locale);
+  const pathname = usePathname();
+
+  const navItems = [
+    { href: `/${locale}/shell/home`, label: T.home, icon: '🏠' },
+    { href: `/${locale}/shell/explore`, label: T.explore, icon: '🌍' },
+    { href: `/${locale}/shell/communities`, label: T.communities, icon: '🧑‍🤝‍🧑' },
+    { href: `/${locale}/shell/direct`, label: T.direct, icon: '💬' },
+  ];
+
   return (
-    <nav className="fixed bottom-0 left-0 right-0 flex h-16 items-center justify-around border-t bg-white">
-      {navItems.map((item) => (
-        <div key={item.key} className="flex flex-col items-center gap-1">
-          <div className="text-2xl">{item.icon}</div>
-        </div>
-      ))}
-    </nav>
+    <footer className="bottom-nav">
+      {navItems.map((item) => {
+        const isActive = pathname === item.href;
+        return (
+          <Link key={item.href} href={item.href} className={isActive ? 'active' : ''}>
+            <span className="icon">{item.icon}</span>
+            <span className="label">{item.label}</span>
+          </Link>
+        );
+      })}
+    </footer>
   );
 }
