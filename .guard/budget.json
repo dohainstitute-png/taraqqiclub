@@ -1,5 +1,5 @@
 {
   "max_files": 6,
-  "max_add": 400,
-  "max_del": 400
+  "max_add": 220,
+  "max_del": 80
 }
